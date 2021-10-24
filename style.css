@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+}
+
+html,
+body {
+  --black: hsl(240, 6%, 13%);
+  --grey: hsl(240, 9%, 89%);
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  display: grid;
+  place-items: center;
+}
+
+main {
+  background: url(./images/background.svg);
+  width: 375px;
+  height: 812px;
+}
+.container {
+  max-width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: var(--grey);
+}
+.avatar {
+  width: 10rem;
+  margin: 11.5rem auto 0;
+  position: relative;
+  /*Agora ao invés do position absolute fizer o top -15px na página inteira, ele fará em relação a esta classe avatar, por isso o "relative"*/
+}
+.avatar span {
+  position: absolute;
+  top: -15px;
+  /*Por causa das configurações de clippy-path no estilo abaixo, este cara perdeu o seu nível, retornaremos isso usando o z-index, trazendo ele pra frente*/
+  z-index: 1;
+}
+.avatar > img {
+  width: 10rem;
+  height: 11.5rem;
+  object-fit: cover;
+  /*Esta funcionalidade object-fit, vai fazer com que a minha imagem se adapte, não fique toda esticada, desproporcional, então vamos cobrir (cover)*/
+  clip-path: polygon(0 25%, 50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%);
+  /*Podemos usar uma ferramenta online pra construir melhor nosso polígino, digitando no google: clippy css. E copiando */
+
+  /*Esse sinal > vai selecionar dentro do avatar a imagem que está no primeiro nível, já que a outra que está dentro do span está no segundo, e eu não quero modificar ela agora.*/
+}
+h1 {
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+a {
+  color: var(--grey);
+  text-decoration: none;
+  margin-top: 0.25rem;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: center;
+  /*Este último align-itens é pra garantir que o conteúdo será centralizado*/
+}
+
+p {
+  margin-top: 2rem;
+}
+
+ul {
+  margin-top: 4rem;
+  list-style: none;
+  /*Com este atributo list-style none nós tiramos as bolinhas da lista.*/
+  padding: 0;
+  display: flex;
+  /*O display flex deixa um ele. ao lado do outro*/
+  gap: 0.5rem;
+  justify-content: center;
+  /*Usamos o justify-content, e não o text-align pq nosso conteúdo não é um texto, postanto essa propriedade usada anteriormente não funcionará neste caso. Que foi liberado pelo display flex*/
+}
